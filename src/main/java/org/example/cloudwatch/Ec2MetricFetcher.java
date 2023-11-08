@@ -117,17 +117,17 @@ public class Ec2MetricFetcher {
                     .build();
 
             GetMetricDataResponse response = cloudWatchClient.getMetricData(request);
-            String ids = "";
+            String id = "";
             List<Instant> timestamps = new ArrayList<>();
             List<Double> values = new ArrayList<>();
 
             for (MetricDataResult result : response.metricDataResults()) {
-                ids = result.id();
+                id = result.id();
                 timestamps = result.timestamps();
                 values = result.values();
             }
 
-            return new MetricDataResponse(ids, timestamps, values);
+            return new MetricDataResponse(id, timestamps, values);
 
         }catch(CloudWatchException e){
             out.println(e.awsErrorDetails().errorMessage());
