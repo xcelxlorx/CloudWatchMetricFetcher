@@ -33,14 +33,11 @@ public class CloudWatch {
         s3Responses.add(s3MetricFetcher.getS3BucketSize());
         s3Responses.add(s3MetricFetcher.getS3NumberOfObjects());
 
-        for (MetricDataResponse response : ec2Responses) {
-            out.println("id=" + response.getId());
-            for (int i = response.getSize() - 1; i >= 0; i--){
-                out.println("timestamp=" + response.getTimestamps().get(i));
-                out.println("value=" + response.getValue().get(i));
-            }
-        }
+        printResponse(ec2Responses);
+        printResponse(s3Responses);
+    }
 
+    private static void printResponse(List<MetricDataResponse> s3Responses) {
         for (MetricDataResponse response : s3Responses) {
             out.println("id=" + response.getId());
             for (int i = response.getSize() - 1; i >= 0; i--){
