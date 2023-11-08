@@ -16,7 +16,7 @@ import java.util.List;
 
 import static java.lang.System.out;
 
-public class MetricFetcher {
+public class Ec2MetricFetcher {
 
     String identifier = "InstanceId";
     String instanceId = ""; //개인 인스턴스 아이디 추가
